@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS ENGENHARIA – Georreferenciamento & Engenharia Florestal</title>
+
+    <!-- Fonte, Font Awesome e outros estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <style>
+        /* Justificar textos da seção de serviços */
+        .servico-detalhado p {
+            text-align: justify;
+        }
+
+        /* Justificar textos da seção de "Sobre Nós" */
+        #sobre p {
+            text-align: justify;
+        }
+
+        /* Justificar textos das vantagens */
+        .vantagens p {
+            text-align: justify;
+        }
+
+        /* Justificar textos do mapa */
+        .map-container p {
+            text-align: justify;
+        }
+    </style>
+</head>
+    <style>
+        :root {
+            --azul-escuro: #012a4b;
+            --azul: #1e66a7;
+            --azul-claro: #6ec1e4;
+            --verde: #2ecc71;
+            --cinza: #f5f7fa;
+            --branco: #ffffff;
+            --sombra: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            background: var(--cinza);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: var(--branco);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 5%;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .left-info {
+            font-size: 16px;
+            color: var(--azul-escuro);
+            font-weight: bold;
+        }
+
+        header .left-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        header .logo-title {
+            text-align: center;
+        }
+
+        header img {
+            height: 80px;
+        }
+
+        header h1 {
+            margin: 10px 0 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--azul-escuro);
+        }
+
+        header .right-info {
+            font-size: 14px;
+            text-align: right;
+            color: var(--azul-escuro);
+        }
+
+        /* Navegação */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background: var(--azul);
+            padding: 10px 0;
+        }
+
+       .tabs button {
+    background: none;
+    border: none;
+    color: var(--branco);
+    font-size: 18px; /* Alterado de 16px para 18px */
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+        .tabs button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--azul-claro);
+            transition: width 0.3s ease;
+        }
+
+        .tabs button.active {
+            color: var(--azul-claro);
+        }
+
+        .tabs button.active::after,
+        .tabs button:hover::after {
+            width: 70%;
+        }
+
+        .tabs button:hover {
+            color: var(--azul-claro);
+        }
+
+        /* Conteúdo das abas */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Carrossel Simples */
+        .carousel {
+            width: 100%;
+            height: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+        }
+
+        /* Seção de Destaque */
+        .destaque {
+            text-align: center;
+            padding: 50px 5%;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 100%);
+            color: white;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+
+        .destaque h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .destaque h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--verde);
+        }
+
+        .destaque p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        .btn-destaque {
+            display: inline-block;
+            background: var(--verde);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: 2px solid var(--verde);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-destaque:hover {
+            background: transparent;
+            color: var(--verde);
+            transform: translateY(-3px);
+        }
+
+        /* Cards de Vantagens */
+        .vantagens {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 60px auto;
+            max-width: 1200px;
+        }
+
+        .vantagem-card {
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .vantagem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .vantagem-icon {
+            font-size: 40px;
+            color: var(--azul);
+            margin-bottom: 20px;
+        }
+
+        /* Mapa */
+        .map-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 20px;
+            background: var(--branco);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .map-container h2 {
+            color: var(--azul-escuro);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border: 3px solid var(--azul);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .coordinates {
+            margin-top: 15px;
+            font-size: 16px;
+            color: var(--azul-escuro);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Serviços */
+        .servicos-detalhados-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .servico-detalhado {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            background: var(--branco);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .servico-detalhado:hover {
+            transform: translateY(-5px);
+        }
+
+        .servico-detalhado img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .servico-detalhado div {
+            flex: 1;
+        }
+
+        .servico-detalhado h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: var(--azul-escuro);
+            position: relative;
+        }
+
+        .servico-detalhado h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--azul);
+        }
+
+        .servico-detalhado p {
+            margin: 0;
+            color: #555;
+        }
+
+        /* Clientes */
+        .clientes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cliente-logo {
+            width: 150px;
+            height: 100px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.8;
+        }
+
+        .cliente-logo:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--azul-escuro);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--azul);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--azul-escuro);
+            transform: translateY(-2px);
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--azul-escuro);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            color: var(--azul-claro);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--azul-claro);
+        }
+
+        .footer-col p, 
+        .footer-col a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--azul-claro);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--azul-claro);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            header .left-info, 
+            header .right-info {
+                text-align: center;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .carousel {
+                height: 400px;
+            }
+            
+            .servico-detalhado {
+                flex-direction: column;
+            }
+            
+            .servico-detalhado img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .destaque h2 {
+                font-size: 28px;
+            }
+            
+            .map-container h2, 
+            .depoimentos h2 {
+                font-size: 26px;
+            }
+            
+            .vantagens, 
+            .depoimentos-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .vantagem-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .depoimento-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tabs button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .carousel {
+                height: 300px;
+            }
+            
+            .destaque {
+                padding: 30px 5%;
+            }
+            
+            .destaque h2 {
+                font-size: 24px;
+            }
+            
+            .destaque p {
+                font-size: 16px;
+            }
+            
+            .map-container {
+                padding: 20px;
+            }
+            
+            .map-container h2 {
+                font-size: 22px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="left-info">
+            <span><i class="fas fa-phone-alt"></i> Telefone: 64 99911-3063</span>
+            <span><i class="fab fa-whatsapp"></i> WhatsApp: 67 3247-4345</span>
+            <span><i class="fas fa-envelope"></i> Email: pedro@psengenhariams.com.br</span>
+        </div>
+        <div class="logo-title">
+            <img src="logo1.jpg" alt="Logo PS Engenharia">
+            <h1>PS Engenharia</h1>
+        </div>
+        <div class="right-info">
+            <span><i class="fas fa-map-marker-alt"></i> Costa Rica-MS, Centro</span>
+            <span>Rua Ambrosina Paes Coelho, 791</span>
+        </div>
+    </header>
+
+    <!-- Abas -->
+   <div class="tabs">
+    <button class="tab-button active" data-tab="home">Home</button>
+    <button class="tab-button" data-tab="servicos">Serviços</button>
+    <button class="tab-button" data-tab="sobre">Sobre</button>
+    <button class="tab-button" data-tab="vendas">Vendas</button>
+    <button class="tab-button" data-tab="clientes">Clientes</button>
+    <button class="tab-button" data-tab="contato">Contato</button>
+    
+    <!-- Botão do WhatsApp -->
+    <!-- Botão do WhatsApp -->
+<a href="https://wa.me/556732474345?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20PS%20Engenharia%21" 
+    
+   class="whatsapp-button">
+   <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
+</a>
+
+<!-- Estilo do Botão (CSS) -->
+<style>
+    .whatsapp-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #25D366; /* Verde do WhatsApp */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); /* Sombra leve */
+        transition: all 0.3s ease; /* Suavidade na transição */
+    }
+
+    .whatsapp-button i {
+        font-size: 20px; /* Ícone de tamanho adequado */
+    }
+
+    .whatsapp-button:hover {
+        background-color: #1DA851; /* Tom mais escuro no hover */
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5); /* Sombra mais destacada */
+        transform: translateY(-3px); /* Efeito de flutuação */
+    }
+
+    .whatsapp-button:active {
+        transform: translateY(1px); /* Movimento ao clicar */
+    }
+</style>
+</div>
+
+    <!-- HOME -->
+    <div id="home" class="tab-content active">
+        <!-- Carrossel Simples -->
+        <div class="carousel">
+            <img src="imagem.jpg" alt="Imagem 1" class="active">
+            <img src="imagem2.jpg" alt="Imagem 2">
+            <img src="imagem3.jpg" alt="Imagem 3">
+        </div>
+        
+        <!-- Seção de Destaque -->
+        <div class="destaque">
+            <h2>Soluções para sua Propriedade Rural</h2>
+            <p>Oferecemos serviços especializados em georreferenciamento, licenciamento, adequação ambiental, topografia para loteamentos, compra, venda, avaliação de imóveis e ativos florestais com compromisso e agilidade.</p>
+            <a href="#contato" class="btn-destaque">Fale Conosco</a>
+        </div>
+        
+        <!-- Vantagens -->
+        <div class="vantagens">
+            <div class="vantagem-card">
+                <div class="vantagem-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Qualidade Garantida</h3>
+                <p>Nossos serviços atendem aos mais rigorosos padrões técnicos e legais do setor.</p>
+            </div>
+            
+            <div class="vantagem-card">
+                <div class="vantagem-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Sustentabilidade</h3>
+                <p>Compromisso com práticas sustentáveis e preservação ambiental em todos os projetos.</p>
+            </div>
+            
+            <div class="vantagem-card">
+                <div class="vantagem-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Atendimento Personalizado</h3>
+                <p>Soluções customizadas para atender às necessidades específicas de cada cliente.</p>
+            </div>
+        </div>
+        
+        <!-- Mapa -->
+        <div class="map-container">
+            <h2>Onde nos encontrar</h2>
+            <div class="map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.308773010775!2d-53.13278722476031!3d-18.54117418246669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMyJzI4LjIiUyA1M8KwMDcnNDkuNyJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="coordinates">
+                <i class="fas fa-map-marker-alt"></i> Coordenadas: -18.541169, -53.130212
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Serviços -->
+    <div id="servicos" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro); position: relative; padding-bottom: 15px;">
+            Nossos Serviços
+            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+        </h2>
+        
+        <div class="servicos-detalhados-container">
+    <div class="servico-detalhado">
+        <img src="geo.jpg" alt="Georreferenciamento">
+        <div>
+            <h3>Georreferenciamento</h3>
+            <p>Georreferenciamento de Imóveis rurais em atendimento à lei Lei nº 10.267/2001, desmembramento, remembramento, unificação. Mais de 500 propriedades certificadas junto ao INCRA nos estados de Mato Grosso, Mato Grosso do Sul, Goiás, Minas Gerais e Paraná, código de credenciamento XMMW.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="divisao.jpg" alt="Divisão Personalizada de Imóveis Rurais">
+        <div>
+            <h3>Divisão Personalizada de Imóveis Rurais</h3>
+            <p>Divisão de imóveis em espólio, avaliação e criação de critérios de divisão, acompanhamento de todo trâmite legal até a emissão das matrículas individualizadas. Adequação documental e ambiental em todo o processo.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="car.jpg" alt="Cadastro Ambiental Rural">
+        <div>
+            <h3>Cadastro Ambiental Rural (CAR)</h3>
+            <p>Cadastro ambiental rural em atendimento à Lei nº 12.651, de 25 de maio de 2012, adequação e elaboração nos sistemas Seriema, Sicar, Simcar, Semad.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="adequacao.jpg" alt="Consultoria e Adequação Ambiental">
+        <div>
+            <h3>Consultoria e Adequação Ambiental</h3>
+            <p>Consultoria ambiental e adequação de projetos, propriedades rurais e empreendimentos que impactam o meio ambiente. Criação de pátios junto ao IBAMA, emissão de DOF e documentação de empreendimentos madeireiros: carvoeiras, madeireiras, elaboração e acompanhamento dos processos. Laudos técnicos e ambientais.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="recuperacao.jpg" alt="Projetos de Recuperação de Áreas Degradadas">
+        <div>
+            <h3>Projetos de Recuperação de Áreas Degradadas</h3>
+            <p>Projetos para recuperação de áreas degradadas: déficit de reserva legal, adequação de áreas de preservação permanente, erosões e voçorocas, projetos para atendimento a notificações e multas ambientais.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="drone.jpg" alt="Aerolevantamento">
+        <div>
+            <h3>Aerolevantamento</h3>
+            <p>Aerolevantamento para elaboração de mapas temáticos, modelos tridimensionais e ortomosaicos georreferenciados.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="licenciamento.jpg" alt="Licenciamento Ambiental">
+        <div>
+            <h3>Licenciamento Ambiental</h3>
+            <p>Licenciamento ambiental para supressão vegetal (desmatamento), retirada de árvores isoladas, licenciamento de barragens, outorgas, cadastro de recursos hídricos, licenciamento de empreendimentos rurais e carvoarias.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="inventario.jpg" alt="Inventários Florestais">
+        <div>
+            <h3>Inventários Florestais</h3>
+            <p>Realização de inventários florestais em florestas nativas e plantadas para determinar produção pré-corte e avaliação e valoração de florestas.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="loteamento.jpg" alt="Topografia para Loteamento">
+        <div>
+            <h3>Topografia em Geral para Loteamentos</h3>
+            <p>Serviços especializados em topografia para loteamentos urbanos e rurais, incluindo divisão de terrenos, demarcação de lotes, cálculo de áreas e elaboração de projetos técnicos conforme legislação vigente.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="reposicao.jpg" alt="Reposição Florestal">
+        <div>
+            <h3>Reposição Florestal</h3>
+            <p>Elaboração de projetos para reposição florestal em atendimento ao Decreto nº 16.588, de 12 de março de 2025, incluindo criação e comercialização de cotas junto ao órgão regulamentador.</p>
+        </div>
+    </div>
+
+    <div class="servico-detalhado">
+        <img src="avaliacao.jpg" alt="Avaliação de Imóveis Rurais">
+        <div>
+            <h3>Avaliação de Imóveis Rurais</h3>
+            <p>Laudos técnicos de avaliação de imóveis rurais para compra e venda, financiamento bancário, inventários e processos judiciais. Análise de valor de mercado considerando características físicas, localização e potencial produtivo.</p>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <!-- Sobre -->
+    <div id="sobre" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro); position: relative; padding-bottom: 15px;">
+            Sobre a PS Engenharia
+            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+        </h2>
+        
+        <div style="display: flex; gap: 40px; margin-bottom: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="pseng.jpg" alt="Equipe PS Engenharia" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            </div>
+            <div style="flex: 1;">
+                <h3 style="color: var(--azul-escuro); margin-bottom: 15px;">Nossa História</h3>
+                <p style="margin-bottom: 20px; line-height: 1.7;">Empresa de assistência técnica, sediada em Costa Rica – MS, mais de 8 anos de mercado, especialista em:  georreferenciamento de imóveis, cadastro ambiental rural, projetos agronômicos, florestais, inventários florestais, compra e venda de ativos e reposição florestal.
+ Mais de 500 propriedades georreferenciadas junto ao INCRA, nos estados de Goiás, Mato Grosso, Mato Grosso do Sul e Minas Gerais. Consulta disponível através de: https://sigef.incra.gov.br/consultar/parcelas - Código do(a) credenciado(a): XMMW 
+.</p>
+                
+                <h3 style="color: var(--azul-escuro); margin-bottom: 15px;">Nossa Missão</h3>
+                <p style="margin-bottom: 20px; line-height: 1.7;">Fornecer soluções técnicos inovadoras em processos de regularização e adequação de imóveis rurais, com atendimento personalizado e “desenrolado”.</p>
+                
+                <h3 style="color: var(--azul-escuro); margin-bottom: 15px;">Nossa Equipe</h3>
+                <p style="line-height: 1.7;">Engenheiro florestal especialista em georreferenciamento de imóveis rurais, Msc. em agronomia, engenheiro agrônomo, engenheira agrícola e técnicos de campos.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendas -->
+   <div id="vendas" class="tab-content">
+    <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro); position: relative; padding-bottom: 15px;">
+        Nossas Oportunidades de Venda
+        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+    </h2>
+    
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+        <p style="font-size: 18px;">Oferecemos oportunidades exclusivas de investimento em ativos florestais e propriedades rurais com alto potencial produtivo e valorização.</p>
+    </div>
+
+    <div class="vantagens" style="max-width: 1200px;">
+        <!-- Categoria 1: Reposição Florestal -->
+        <div class="vantagem-card" style="background: linear-gradient(135deg, rgba(30,102,167,0.1) 0%, rgba(110,193,228,0.1) 100%); border: 1px solid var(--azul-claro);">
+            <div class="vantagem-icon" style="color: var(--azul);">
+                <i class="fas fa-tree"></i>
+            </div>
+            <h3 style="color: var(--azul-escuro);">Reposição Florestal</h3>
+            <p style="margin-bottom: 15px;">Cotas de reposição florestal regularizadas e prontas para negociação, com documentação 100% em dia junto aos órgãos ambientais.</p>
+            <ul style="text-align: left; padding-left: 20px; margin-bottom: 15px;">
+                <li>Cotas de eucalipto e pinus</li>
+                <li>Regularização ambiental garantida</li>
+                <li>Processo de transferência ágil</li>
+            </ul>
+            <a href="#contato" class="btn-destaque" style="background: var(--azul); border-color: var(--azul); padding: 8px 20px; font-size: 14px;">Consultar Disponibilidade</a>
+        </div>
+        
+        <!-- Categoria 2: Florestas -->
+              <div class="vantagem-card" style="background: linear-gradient(135deg, rgba(46,204,113,0.1) 0%, rgba(34,153,84,0.1) 100%); border: 1px solid var(--verde);">
+            <div class="vantagem-icon" style="color: var(--verde);">
+                <i class="fas fa-seedling"></i>
+            </div>
+            <h3 style="color: var(--azul-escuro);">Florestas e Ativos Florestais</h3>
+            <p style="margin-bottom: 15px;">Áreas florestais nativas e plantadas com diferentes idades e potencial produtivo, ideais para investimento de longo prazo.</p>
+            <ul style="text-align: left; padding-left: 20px; margin-bottom: 15px;">
+                <li>Florestas de eucalipto em diferentes idades</li>
+                <li>Áreas de mata nativa preservada</li>
+                <li>Potencial madeireiro e carbonífero</li>
+            </ul>
+            <a href="#contato" class="btn-destaque" style="background: var(--verde); border-color: var(--verde); padding: 8px 20px; font-size: 14px;">Ver Ofertas</a>
+        </div>
+        
+        <!-- Categoria 3: Fazendas -->
+        <div class="vantagem-card" style="background: linear-gradient(135deg, rgba(1,42,75,0.1) 0%, rgba(30,102,167,0.1) 100%); border: 1px solid var(--azul-escuro);">
+            <div class="vantagem-icon" style="color: var(--azul-escuro);">
+                <i class="fas fa-tractor"></i>
+            </div>
+            <h3 style="color: var(--azul-escuro);">Fazendas</h3>
+            <p style="margin-bottom: 15px;">Propriedades rurais com diferentes perfis: desde áreas para reflorestamento até fazendas produtivas com infraestrutura completa.</p>
+            <ul style="text-align: left; padding-left: 20px; margin-bottom: 15px;">
+                <li>Fazendas com potencial florestal</li>
+                <li>Áreas para implantação de florestas</li>
+                <li>Propriedades com infraestrutura agrícola</li>
+            </ul>
+            <a href="#contato" class="btn-destaque" style="background: var(--azul-escuro); border-color: var(--azul-escuro); padding: 8px 20px; font-size: 14px;">Conhecer Oportunidades</a>
+        </div>
+    </div>
+    
+    <!-- Seção de Destaque para Vendas -->
+    <div class="destaque" style="margin-top: 50px; background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 100%);">
+        <h2>Interessado em Nossas Oportunidades?</h2>
+        <p style="max-width: 700px;">Temos um portfólio exclusivo de propriedades e ativos florestais. Entre em contato para receber informações detalhadas sobre as melhores oportunidades de investimento no setor.</p>
+        <a href="#contato" class="btn-destaque" style="background: white; color: var(--azul); border-color: white;">Falar com Especialista</a>
+    </div>
+</div>
+
+    <!-- Clientes -->
+    <div id="clientes" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro; position: relative; padding-bottom: 15px;">
+            Nossos Clientes
+            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+        </h2>
+        
+        <p style="text-align: center; margin-bottom: 30px; font-size: 18px;">Alguns dos nossos principais clientes:</p>
+        
+        <div class="clientes-container">
+            <img src="gerdau.jpg" alt="Gerdau" class="cliente-logo">
+            <img src="bocalan.jpg" alt="Bocalan" class="cliente-logo">
+            <img src="jl.jpg" alt="JL" class="cliente-logo">
+            <img src="prefeitura.jpg" alt="Prefeitura" class="cliente-logo">
+            <img src="brasil.jpg" alt="Brasil" class="cliente-logo">
+            <img src="c.jpg" alt="C" class="cliente-logo">
+            <img src="urbimax.jpg" alt="Urbimax" class="cliente-logo">
+            <img src="baldasso.jpg" alt="Baldasso" class="cliente-logo">
+        </div>
+    </div>
+
+    <!-- Contato -->
+    <div id="contato" class="tab-content">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro); position: relative; padding-bottom: 15px;">
+            Contato
+            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+        </h2>
+        
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+                </div>
+                
+                <button<button type="submit" class="submit-btn">Enviar Mensagem</button>
+        </form>
+    </div>
+</div>
+
+<!-- Rodapé -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>Contato</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Rua Ambrosina Paes Coelho, 791 - Centro, Costa Rica - MS</p>
+            <p><i class="fas fa-phone-alt"></i> Telefone: 64 99911-3063</p>
+            <p><i class="fab fa-whatsapp"></i> WhatsApp: 67 3247-4345</p>
+            <p><i class="fas fa-envelope"></i> Email: pedro@psengenhariams.com.br</p>
+            <p><i class="fas fa-clock"></i> Horário de Atendimento: Seg-Sex: 07:00-17:00 Horario Local</p>
+        </div>
+        
+        
+    </div>
+    
+    <div class="copyright">
+        <p>&copy; 2025 PS Engenharia. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+    // Função para o carrossel
+    function initCarousel() {
+        const carousel = document.querySelector('.carousel');
+        const images = carousel.querySelectorAll('img');
+        let currentIndex = 0;
+        
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+        
+        // Inicializa mostrando a primeira imagem
+        showImage(0);
+        
+        // Muda a imagem a cada 5 segundos
+        setInterval(nextImage, 5000);
+    }
+    
+    // Função para as abas
+    function initTabs() {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove a classe 'active' de todos os botões e conteúdos
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Adiciona 'active' apenas no botão clicado e no conteúdo correspondente
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    }
+    
+    // Inicializa quando o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', function() {
+        initCarousel();
+        initTabs();
+    });
+</script>
