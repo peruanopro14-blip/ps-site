@@ -997,27 +997,54 @@
     </div>
 </div>
 
-    <!-- Clientes -->
-    <div id="clientes" class="tab-content">
-        <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro; position: relative; padding-bottom: 15px;">
-            Nossos Clientes
-            <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
-        </h2>
-        
-        <p style="text-align: center; margin-bottom: 30px; font-size: 18px;">Alguns dos nossos principais clientes:</p>
-        
-        <div class="clientes-container">
-            <img src="gerdau.jpg" alt="Gerdau" class="cliente-logo">
-            <img src="bocalan.jpg" alt="Bocalan" class="cliente-logo">
-            <img src="jl.jpg" alt="JL" class="cliente-logo">
-            <img src="prefeitura.jpg" alt="Prefeitura" class="cliente-logo">
-            <img src="brasil.jpg" alt="Brasil" class="cliente-logo">
-            <img src="c.jpg" alt="C" class="cliente-logo">
-            <img src="urbimax.jpg" alt="Urbimax" class="cliente-logo">
-            <img src="baldasso.jpg" alt="Baldasso" class="cliente-logo">
-        </div>
+ <!-- Clientes -->
+<div id="clientes" class="tab-content">
+    <h2 style="text-align: center; margin-bottom: 40px; color: var(--azul-escuro); position: relative; padding-bottom: 15px;">
+        Nossos Clientes
+        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--azul);"></span>
+    </h2>
+    
+    <p style="text-align: center; margin-bottom: 30px; font-size: 18px;">Alguns dos nossos principais clientes:</p>
+    
+    <div class="clientes-container">
+        <img src="gerdau.jpg" alt="Gerdau" class="cliente-logo">
+        <img src="bocalan.jpg" alt="Bocalan" class="cliente-logo">
+        <img src="jl.jpg" alt="JL" class="cliente-logo">
+        <img src="prefeitura.jpg" alt="Prefeitura" class="cliente-logo">
+        <img src="brasil.jpg" alt="Brasil" class="cliente-logo">
+        <img src="c.jpg" alt="C" class="cliente-logo">
+        <img src="urbimax.jpg" alt="Urbimax" class="cliente-logo">
+        <img src="baldasso.jpg" alt="Baldasso" class="cliente-logo">
     </div>
+</div>
 
+<style>
+    /* CSS para as logos dos clientes */
+    .clientes-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .cliente-logo {
+        width: 150px;
+        height: 100px;
+        object-fit: contain;
+        transition: all 0.3s ease;
+        filter: grayscale(0%); /* ISTO FAZ A LOGO APARECER SEMPRE COLORIDA */
+        opacity: 1; /* ISTO GARANTE A OPACIDADE TOTAL POR PADRÃO */
+    }
+
+    .cliente-logo:hover {
+        transform: scale(1.1); /* MANTÉM O EFEITO DE ZOOM AO PASSAR O MOUSE */
+        filter: grayscale(0%); /* Redundante aqui, mas não atrapalha */
+        opacity: 1; /* Mantém opacidade total */
+    }
+</style>
 <!-- Notícias -->
 <!-- Seção de Notícias -->
 <div id="noticias" class="tab-content">
