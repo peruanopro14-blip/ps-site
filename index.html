@@ -872,7 +872,7 @@
         <img src="reposicao.jpg" alt="Reposição Florestal">
         <div>
             <h3>Reposição Florestal</h3>
-            <p>Elaboração de projetos para reposição florestal em atendimento ao Decreto nº 16.588, de 12 de março de 2025, incluindo criação e comercialização de cotas junto ao órgão regulamentador.</p>
+            <p><p>Elaboramos e executamos projetos de Reposição Florestal completos, garantindo a conformidade total com a nova legislação estadual, incluindo o Decreto nº 16.588/2025 e, principalmente, a Resolução Conjunta SEMADESC/IAGRO/IMASUL N. 003/2025. Abrangemos desde a criação e comercialização de cotas até o monitoramento florestal contínuo, atendendo rigorosamente todas as exigências dos órgãos reguladores como IAGRO e IMASUL no Mato Grosso do Sul. Proteja seu patrimônio e garanta a sustentabilidade com nossa expertise.</p>.</p>
         </div>
     </div>
 
@@ -1028,7 +1028,7 @@
 
     <!-- Container -->
     <div id="rss-noticias" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px; padding: 20px;">
-        <!-- Notícia FIXA da PS Engenharia -->
+        <!-- Notícia FIXA da PS Engenharia (Mudança de Endereço) -->
         <div style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                 <i class="fas fa-map-marker-alt" style="color: #012a4b;"></i>
@@ -1039,7 +1039,7 @@
             </div>
             <h3 style="color: var(--azul-escuro); margin-bottom: 10px;">Mudança de endereço!</h3>
             <p style="color: #666; margin-bottom: 15px;">
-                Estamos em novo endereço! Agora nosso escritório fica na <strong>Rua Josina Garcia de Melo, nº 427, Centro - Costa Rica/MS</strong>. 
+                Estamos em novo endereço! Agora nosso escritório fica na <strong>Rua Josina Garcia de Melo, nº 427, Centro - Costa Rica/MS</strong>.
                 Venha nos visitar em nossas novas instalações!
             </p>
             <a href="#contato" style="color: var(--azul); font-weight: 500; text-decoration: none;">
@@ -1047,7 +1047,25 @@
             </a>
         </div>
 
-        <!-- Notícias Dinâmicas -->
+        <!-- NOTÍCIA FIXA DE ALERTA REGULATÓRIO (NOVA RESOLUÇÃO) -->
+        <div style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <i class="fas fa-gavel" style="color: #012a4b;"></i> <!-- Ícone de martelo para legislação -->
+                <span style="font-weight: 500; color: #012a4b;">Alerta Regulatório</span>
+                <span style="margin-left: auto; font-size: 14px; color: #666;">
+                    <i class="far fa-calendar-alt"></i> 02 de dezembro de 2025
+                </span>
+            </div>
+            <h3 style="color: var(--azul-escuro); margin-bottom: 10px;">Nova Resolução Conjunta SEMADESC/IAGRO/IMASUL N. 003/2025: Sua Propriedade está em conformidade?</h3>
+            <p style="color: #666; margin-bottom: 15px;">
+                A recente Resolução Conjunta SEMADESC/IAGRO/IMASUL N. 003/2025 no Mato Grosso do Sul estabelece novas diretrizes para o cadastro e monitoramento florestal obrigatório de florestas plantadas e reflorestamento. Nossa equipe é especialista em reposição florestal, adequação aos prazos de cadastramento (até 31 de Março de 2027, com escalonamento) e no monitoramento fitossanitário exigido, garantindo que sua propriedade evite penalidades e otimize a produtividade florestal.
+            </p>
+            <a href="#servicos" style="color: var(--azul); font-weight: 500; text-decoration: none;">
+                Saiba como podemos ajudar a evitar multas e garantir a conformidade <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Notícias Dinâmicas (carregadas via JavaScript) -->
         <div id="noticias-api">
             <!-- Carregadas via JavaScript -->
         </div>
@@ -1061,15 +1079,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Formatador de data
     function formatarData(dataString) {
         const data = new Date(dataString);
-        return data.toLocaleDateString('pt-BR', { 
-            day: '2-digit', 
-            month: 'long', 
-            year: 'numeric' 
+        return data.toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
         });
     }
 
     // Notícias pré-definidas (fallback)
     const noticiasFallback = [
+        // NOVAS NOTÍCIAS RELACIONADAS À RESOLUÇÃO
+        {
+            titulo: "IAGRO e IMASUL intensificam fiscalização de monitoramento florestal no MS",
+            descricao: "Órgãos estaduais alertam para a importância do cumprimento da Resolução Conjunta 003/2025 para produtores florestais e de reposição florestal.",
+            data: "2025-12-05", // Exemplo de data que você pode ajustar
+            fonte: "SEMADESC/IAGRO/IMASUL",
+            icone: "fas fa-balance-scale",
+            cor: "#007bff",
+            link: "#" // Se tiver um link interno para um blog post futuro, use. Caso contrário, mantenha #
+        },
+        {
+            titulo: "Novos prazos para cadastro de reposição florestal obrigatória: Resolução SEMADESC em destaque",
+            descricao: "Produtores rurais devem ficar atentos aos cronogramas de registro de florestas plantadas e reflorestamento estabelecidos pela Resolução Conjunta 003/2025.",
+            data: "2025-11-28", // Exemplo de data
+            fonte: "SEMADESC/IAGRO/IMASUL",
+            icone: "fas fa-calendar-alt",
+            cor: "#6c757d",
+            link: "#"
+        },
+        {
+            titulo: "Guia completo de Monitoramento Fitossanitário para Eucalipto e Pinus no MS",
+            descricao: "Entenda as exigências da IAGRO e IMASUL para o monitoramento florestal e proteja sua cultura contra pragas com a PS Engenharia.",
+            data: "2025-11-20", // Exemplo de data
+            fonte: "PS Engenharia", // Fonte interna
+            icone: "fas fa-shield-alt", // Ícone de escudo para proteção
+            cor: "#2ecc71",
+            link: "#"
+        },
+
         // IBGE
         {
             titulo: "IBGE: Crescimento de áreas preservadas em MS",
@@ -1089,7 +1136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cor: "#2ecc71",
             link: "https://www.ibge.gov.br"
         },
-        
+
         // Agência Brasil
         {
             titulo: "Técnicas inovadoras de reflorestamento",
@@ -1109,7 +1156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cor: "#1e66a7",
             link: "https://agenciabrasil.ebc.com.br"
         },
-        
+
         // MMA
         {
             titulo: "MMA lança programa de conservação de solos",
@@ -1129,7 +1176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cor: "#27ae60",
             link: "https://www.gov.br/mma"
         },
-        
+
         // INPE
         {
             titulo: "Queda de 15% nas queimadas no Pantanal",
@@ -1149,7 +1196,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cor: "#e74c3c",
             link: "https://queimadas.dgi.inpe.br"
         },
-        
+
         // ICMBio
         {
             titulo: "Novos parques nacionais abertos à visitação",
@@ -1160,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cor: "#16a085",
             link: "https://www.icmbio.gov.br"
         },
-        
+
         // ANA
         {
             titulo: "Monitoramento de recursos hídricos",
@@ -1198,13 +1245,13 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Simula carregamento de APIs (substitua por chamadas reais se quiser)
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
             // Mescla notícias de APIs com fallback
             const todasNoticias = [...noticiasFallback];
-            
+
             // Ordena por data (mais recente primeiro)
             todasNoticias.sort((a, b) => new Date(b.data) - new Date(a.data));
-            
+
             exibirNoticias(todasNoticias);
         } catch (error) {
             console.log("Usando notícias fallback");
